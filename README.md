@@ -10,6 +10,3 @@
 ktjw1125/ktjw1125 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 You can click the Preview link to take a look at your changes.
 --->
-
-프로젝트 페이지
-https://www.notion.so/project-770ace625c234784baac128b86df6f5f?pvs=4 
