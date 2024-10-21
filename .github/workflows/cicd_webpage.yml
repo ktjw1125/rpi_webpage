@@ -33,7 +33,7 @@ jobs:
       - name: Copy index.html to the server
         run: |
           # 서버에 파일을 복사
-          scp -o StrictHostKeyChecking=no -P ${{ env.SERVER_PORT }} index.html ${{ env.SERVER_USERNAME }}@${{ env.SERVER_IP }}:/var/www/html/
+          scp -v -o StrictHostKeyChecking=no -P ${{ env.SERVER_PORT }} index.html ${{ env.SERVER_USERNAME }}@${{ env.SERVER_IP }}:/var/www/html/
           
           # 파일 복사가 완료되었는지 확인 (서버에서 ls 명령어로 확인)
-          ssh -o StrictHostKeyChecking=no -p ${{ env.SERVER_PORT }} ${{ env.SERVER_USERNAME }}@${{ env.SERVER_IP }} "ls -l /var/www/html/"
+          ssh -v -o StrictHostKeyChecking=no -p ${{ env.SERVER_PORT }} ${{ env.SERVER_USERNAME }}@${{ env.SERVER_IP }} "ls -l /var/www/html/"
