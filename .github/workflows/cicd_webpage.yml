@@ -25,13 +25,14 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa  # 비공개 키를 저장
           chmod 600 ~/.ssh/id_rsa  # 비공개 키의 권한 설정
-          # ssh-agent 시작 및 키 추가
-          eval $(ssh-agent -s)
-          ssh-add ~/.ssh/id_rsa
           touch ~/.ssh/known_hosts
           chmod 600 ~/.ssh/known_hosts  # 권한 설정
           ssh-keyscan -H -p ${{ env.SERVER_PORT }} ${{ env.SERVER_IP }} >> ~/.ssh/known_hosts || echo "Failed to add SSH key"  # 서버의 SSH 키를 known_hosts에 추가
           cat ~/.ssh/known_hosts  # known_hosts 파일 내용 확인
+          cat ~/.ssh/authorized_keys
+          ls -l /etc/ssh/
+          cat /etc/ssh/ssh_config
+          cat /etc/ssh/sshd_config
         
       - name: Copy index.html to the server
         run: |
