@@ -12,7 +12,8 @@ jobs:
     runs-on: ubuntu-latest  # GitHub Actions의 Ubuntu 환경에서 실행
 
     env:
-      SERVER_IP: 192.168.1.20
+      SERVER_IP: 211.201.153.117
+      SERVER_PORT: 8002
       SERVER_USERNAME: jwrpicli
 
     steps:
@@ -26,13 +27,13 @@ jobs:
           chmod 600 ~/.ssh/id_rsa  # 비공개 키의 권한 설정
           touch ~/.ssh/known_hosts
           chmod 600 ~/.ssh/known_hosts  # 권한 설정
-          ssh-keyscan -H ${{ env.SERVER_IP }} >> ~/.ssh/known_hosts || echo "Failed to add SSH key"  # 서버의 SSH 키를 known_hosts에 추가
+          ssh-keyscan -H -p ${{ env.SERVER_PORT }} ${{ env.SERVER_IP }} >> ~/.ssh/known_hosts || echo "Failed to add SSH key"  # 서버의 SSH 키를 known_hosts에 추가
           cat ~/.ssh/known_hosts  # known_hosts 파일 내용 확인
-
+        
       - name: Copy index.html to the server
         run: |
           # 서버에 파일을 복사
-          scp -o StrictHostKeyChecking=no index.html ${{ env.SERVER_USERNAME }}@${{ env.SERVER_IP }}:/var/www/html/
+          scp -o StrictHostKeyChecking=no -P ${{ env.SERVER_PORT }} index.html ${{ env.SERVER_USERNAME }}@${{ env.SERVER_IP }}:/var/www/html/
           
           # 파일 복사가 완료되었는지 확인 (서버에서 ls 명령어로 확인)
-          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USERNAME }}@${{ env.SERVER_IP }} "ls -l /var/www/html/"        
+          ssh -o StrictHostKeyChecking=no -p ${{ env.SERVER_PORT }} ${{ env.SERVER_USERNAME }}@${{ env.SERVER_IP }} "ls -l /var/www/html/"
