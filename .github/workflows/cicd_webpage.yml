@@ -28,11 +28,11 @@ jobs:
           chmod 600 ~/.ssh/known_hosts  # 권한 설정
           ssh-keyscan -H ${{ env.SERVER_IP }} >> ~/.ssh/known_hosts || echo "Failed to add SSH key"  # 서버의 SSH 키를 known_hosts에 추가
           cat ~/.ssh/known_hosts  # known_hosts 파일 내용 확인
-        
+
       - name: Copy index.html to the server
         run: |
           # 서버에 파일을 복사
-          scp -o StrictHostKeyChecking=no index.html $SERVER_USERNAME@$SERVER_IP:/var/www/html/
+          scp -o StrictHostKeyChecking=no index.html ${{ env.SERVER_USERNAME }}@${{ env.SERVER_IP }}:/var/www/html/
           
           # 파일 복사가 완료되었는지 확인 (서버에서 ls 명령어로 확인)
-          ssh -o StrictHostKeyChecking=no $SERVER_USERNAME@$SERVER_IP "ls -l /var/www/html/"
+          ssh -o StrictHostKeyChecking=no ${{ env.SERVER_USERNAME }}@${{ env.SERVER_IP }} "ls -l /var/www/html/"        
