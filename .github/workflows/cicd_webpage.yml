@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - 'index.html'  # 변경된 파일 경로
+  workflow_dispatch:  # 수동 실행을 위한 트리거
 
 jobs:
   deploy:
