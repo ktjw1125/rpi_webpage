@@ -19,10 +19,6 @@ jobs:
           mkdir ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa  # 비공개 키를 저장
           chmod 600 ~/.ssh/id_rsa  # 비공개 키의 권한 설정
-          ls -l ~/.ssh
-          pwd
-          ls -l
-          cat index.html
          # touch ~/.ssh/known_hosts
          # chmod 600 ~/.ssh/known_hosts  # 권한 설정
          # ssh-keyscan -H -p ${{ secrets.SERVER_PORT }} ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts || echo "Failed to add SSH key"  # 서버의 SSH 키를 known_hosts에 추가
@@ -31,7 +27,8 @@ jobs:
       - name: Copy index.html to the server
         run: |
           # 서버에 파일을 복사
-          scp -v -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -P ${{ secrets.SSH_PORT }} index.html ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }}:/var/www/html/
-          ls -l
+          #scp -v -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -P ${{ secrets.SSH_PORT }} index.html ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }}:/var/www/html/
+          scp -v -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -P ${{ secrets.SSH_PORT }} index.html ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }}:/home/${{ secrets.SERVER_USERNAME }}
+          ssh -v -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }} ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }} "sudo mv ~/index.html /var/www/html/"
           # 파일 복사가 완료되었는지 확인 (서버에서 ls 명령어로 확인)
           ssh -v -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }} ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }} "ls -l /var/www/html/"
