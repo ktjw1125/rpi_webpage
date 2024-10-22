@@ -1,4 +1,4 @@
-👋 Hi, I’m @ktjw1125  
+👋 Hi, I’m [@ktjw1125](https://github.com/ktjw1125)  
 <br>
 
 😄 프로젝트 목표 :   
