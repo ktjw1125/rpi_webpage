@@ -48,3 +48,6 @@ git push<br><br>
 
 github웹에서 자동배포 내역확인 (실패시 이메일도 온다)<br>
 gh 설치하면 CLI환경에서도 워크플로우 확인가능<br>
+
+<img width="971" alt="image" src="https://github.com/user-attachments/assets/87cf42a5-06fb-4100-ba07-203d72f27454">
+
