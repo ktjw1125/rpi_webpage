@@ -38,6 +38,7 @@ cp /var/www/html/index.html . (기존 사용하던 index.html 파일 있다면 �
 
 4. github action ci/cd 워크플로우 yml파일 작성<br>
 ssh 인증서 준비 (github action 컨테이너와 rpi간 자동배포용)<br>
+github secret변수에 개인키, ip, 포트 등 민감정보 등록 <br>
 mkdir -p .github/workflows<br>
 vi .github/workflows/cicd_webpage.yml<br><br>
 
@@ -46,7 +47,7 @@ git add .<br>
 git commit -m "comment"<br>
 git push<br><br>
 
-github웹에서 자동배포 내역확인 (실패시 이메일도 온다)<br>
+github웹에서 자동배포 내역확인 (실패시 이메일 발송)<br>
 gh 설치하면 CLI환경에서도 워크플로우 확인가능<br>
 
 <img width="971" alt="image" src="https://github.com/user-attachments/assets/87cf42a5-06fb-4100-ba07-203d72f27454">
