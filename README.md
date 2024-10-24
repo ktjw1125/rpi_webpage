@@ -8,9 +8,12 @@
 <br>
 
 ⚡ 결과
-- index.html 파일 : https://github.com/ktjw1125/rpi_webpage_continuous_deploy/blob/main/index.html
-- 워크플로우 yml파일 : https://github.com/ktjw1125/rpi_webpage_continuous_deploy/blob/main/.github/workflows/cicd_webpage.yml
-- 라즈베리파이 웹페이지 : http://211.201.153.117:8000/  
+- index.html 파일 : <br>
+https://github.com/ktjw1125/rpi_webpage_continuous_deploy/blob/main/index.html
+- 워크플로우 yml파일 : <br>
+https://github.com/ktjw1125/rpi_webpage_continuous_deploy/blob/main/.github/workflows/cicd_webpage.yml
+- 라즈베리파이 웹페이지 : <br>
+http://211.201.153.117:8000/  
 <br>
 
 🌱 진행 과정
