@@ -1,10 +1,9 @@
+# github으로 관리하는 index.html 파일이 변경되거나 수동 트리거시 워크플로우를 실행하여 웹서버에 자동으로 배포하는 yaml파일 입니다.
 name: Copy index.html to Server
-
-# github으로 관리하는 index.html 파일이 변경되거나 수동 트리거시 워크플로우가 실행되어 웹서버에 자동 배포하는 yaml파일 입니다.
 on:
   push:
     paths:
-      - 'index.html'  # 변경된 파일 경로
+      - 'index.html'  # 변경이 감지되는 파일 경로
   workflow_dispatch:  # 수동 실행을 위한 트리거
 
 jobs:
@@ -12,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest  # GitHub Actions의 Ubuntu 환경에서 실행
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2  # 리포지토리를 체크아웃
+        uses: actions/checkout@v2  # 리포지토리 체크아웃
 
       - name: Set up SSH key for server access
         run: |
